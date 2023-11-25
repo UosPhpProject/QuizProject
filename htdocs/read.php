@@ -26,7 +26,7 @@
 <?PHP
   include( "./config.cfg" );
   include( "./functions.inc" );
-  $con = mysqli_connect( "localhost", "phpadmin1", "zaza4490" , "project" );
+  $con = mysqli_connect( "localhost", "phpadmin", "phpadmin" , "project" );
   if (mysqli_connect_errno()) {
     printf("%s \n", mysqli_connect_error());
     exit;
