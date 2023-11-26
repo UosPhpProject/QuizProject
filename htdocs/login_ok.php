@@ -57,6 +57,7 @@ if(!$num){ // 아이디가 존재하지 않으면
         // $_SESSION["세션변수명"] = 저장할 값;
         $_SESSION["email"] = $array["email"];
         $_SESSION["permission"] = $array["permission"];
+        $_SESSION["user_id"] = $array["user_id"];
         // echo "idx : ".$_SESSION["s_idx"]." / "."NAME : ".$_SESSION["s_name"]." / "."ID : ".$_SESSION["s_id"];
 
         /* DB 연결 종료 */

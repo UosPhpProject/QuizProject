@@ -1,19 +1,21 @@
 <?php
     session_start();
 
-    $s_id = isset($_SESSION["permission"]) ? $_SESSION["permission"] : "";
-    $s_name = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
+    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
     // echo "Session ID : ".$s_id." / Name : ".$s_name;
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>퀴즈 게시판</title>
     <style>
+        <?PHP include( "./quiz_style.inc" );?>
+        <?PHP include( "./common_style.inc" );?>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -94,25 +96,24 @@
         }
     </script>
 </head>
-
 <body>
-
+    
     <div class="quiz-container">
         <div class="board-title">
             <div>퀴즈 게시판</div>
             <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
         </div>
-        <?php if (!$s_id) { /* 로그인 전  */ ?>
-            <p>
-                <div class="quiz-card">
-                    <div class="quiz-header">
-                        <a href="./login.php">로그인</a>
-                        <a href="./join.php">회원가입</a>
-                    </div>
-                </div>
-            </p>
-        <?php } else { ?>
-            <?php
+        <?php if(!$s_id){/* 로그인 전  */ ?>
+    <p>
+        <div class="quiz-card" >
+        <div class="quiz-header">
+        <a href="./login.php">로그인</a>
+        <a href="./join.php">회원가입</a>
+        </div>
+        </div>
+    </p>
+    <?php } else{ ?>
+    <?php   
             // 데이터베이스 연결 설정
             include "./dbcon.php";
 
@@ -127,9 +128,9 @@
 
             // 퀴즈 게시판 출력
             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+                while($row = $result->fetch_assoc()) {
                     echo '<div class="quiz-card">';
-                    echo '<div class="quiz-header">' . $row["quiz_content"] . '</div>';
+                    echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
                     echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
@@ -137,16 +138,20 @@
             } else {
                 echo "게시글이 없습니다.";
             }
+            // $ses= $_SESSION['permission'];
+            // if($ses=="0"){
+            //     echo '<div class="quiz-card">';
+            //     echo '<div class="quiz-header">'. "문의 게시판".'</div>';
+            //     echo '</div>';
+            // }
             // 연결 종료
             $conn->close();
-            echo '<button type="submit" onclick="confirmLogout()" class="logout-button">로그아웃</button>';
+            echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
             echo '<button type="submit" onclick="location.href=\'write_quiz.php\'" class="write-button">글쓰기</button>';
         }
         ?>
-
+        
     </div>
 
 </body>
-
 </html>
-
