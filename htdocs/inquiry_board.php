@@ -1,9 +1,11 @@
 <?php
     session_start();
 
-    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
-    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
-    // echo "Session ID : ".$s_id." / Name : ".$s_name;
+    // 로그인 여부 확인
+    if (!isset($_SESSION["permission"])) {
+        header("Location: login.php");
+        exit();
+    }
 ?>
 
 
@@ -12,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>퀴즈 게시판</title>
+    <title>문의 게시판</title>
     <style>
         <?PHP include( "./quiz_style.inc" );?>
         <?PHP include( "./common_style.inc" );?>
@@ -100,19 +102,9 @@
     
     <div class="quiz-container">
         <div class="board-title">
-            <div>퀴즈 게시판</div>
-            <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
-        </div>
-        <?php if(!$s_id){/* 로그인 전  */ ?>
-    <p>
-        <div class="quiz-card" >
-        <div class="quiz-header">
-        <a href="./login.php">로그인</a>
-        <a href="./join.php">회원가입</a>
-        </div>
-        </div>
-    </p>
-    <?php } else{ ?>
+            <div>문의 게시판</div>
+            <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
+    </div>
     <?php   
             // 데이터베이스 연결 설정
             include "./dbcon.php";
@@ -122,31 +114,16 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            // 퀴즈 데이터 가져오기
-            $sql = "SELECT * FROM quiz ORDER BY created_at DESC";
-            $result = $conn->query($sql);
-
-            if (isset($_GET['quiz_id'])) {
-                $quizId = $_GET['quiz_id'];
-            
-                // quiz_id가 정의되었는지 확인
-                if (!empty($quizId)) {
-                    // SQL 쿼리에 quiz_id 추가
-                    $sqlUpdateViews = "UPDATE quiz SET views = views + 1 WHERE quiz_id = $quizId";
-                    $conn->query($sqlUpdateViews);
-                }
-            }
-
+            // 문의 데이터 가져오기
+            $sqlInquiry = "SELECT * FROM inquiry ORDER BY created_at DESC";
+            $resultInquiry = $conn->query($sqlInquiry);
 
             // 퀴즈 게시판 출력
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    
-
-                    
+            if ($resultInquiry->num_rows > 0) {
+                while($row = $resultInquiry->fetch_assoc()) {
                     echo '<div class="quiz-card">';
-                    echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
+                    echo '<div class="quiz-header"><a href="./read_inquiry.php?inquiry_id=' . $row["inquiry_id"] . '">' . $row["inquiry_content"] . '</a></div>';
+                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
                 }
@@ -162,8 +139,8 @@
             // 연결 종료
             $conn->close();
             echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
-            echo '<button type="submit" onclick="location.href=\'write_quiz.php\'" class="write-button">글쓰기</button>';
-        }
+            echo '<button type="submit" onclick="location.href=\'write_inquiry.php\'" class="write-button">글쓰기</button>';
+        
         ?>
         
     </div>

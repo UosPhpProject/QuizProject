@@ -20,9 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $quizTitle = $_POST["quizTitle"];
     $quizAnswer = $_POST["correct_answer"];
     $userId = $_SESSION["permission"];
+    $createdAt = date("Y-m-d");
 
     // 데이터베이스에 퀴즈 등록
-    $sql = "INSERT INTO quiz (quiz_content, correct_answer, user_id) VALUES ('$quizTitle', '$quizAnswer', '$userId')";
+    $sql = "INSERT INTO quiz (quiz_content, correct_answer, user_id, created_at,views) 
+            VALUES ('$quizTitle', '$quizAnswer', '$userId', '$createdAt',0)";
     $result = $conn->query($sql);
 
     // 연결 종료
