@@ -1,0 +1,14 @@
+CREATE TABLE board(
+  uid int unsigned AUTO_INCREMENT,
+  gid int unsigned DEFAULT 0,
+  depth varchar(255) DEFAULT 'A',
+  name varchar(20) NOT NULL,
+  email varchar(50),
+  homepage varchar(50),
+  passwd varchar(10) NOT NULL,
+  subject varchar(255) NOT NULL,
+  article text NOT NULL,
+  writedate char(10) NOT NULL,
+  refnum int unsigned DEFAULT 0,
+  PRIMARY KEY (uid)
+);

@@ -8,6 +8,15 @@ body {
             margin: auto;
         }
 
+        .board-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .quiz-card {
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -42,4 +51,29 @@ body {
             font-size: 1.3em;
             font-weight: bold;
             text-align: center;
+        }
+
+        .category-link {
+            font-size: 1em;
+            color: #555;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .button-container {
+            overflow: hidden;
+        }
+
+        .logout-button {
+            float: left;
+        }
+
+        .write-button {
+            float: right;
+        }
+
+        .button-container div {
+            width: 50%;
+            box-sizing: border-box;
         }

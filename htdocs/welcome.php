@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
     $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
     // echo "Session ID : ".$s_id." / Name : ".$s_name;
@@ -16,70 +15,6 @@
     <style>
         <?PHP include( "./quiz_style.inc" );?>
         <?PHP include( "./common_style.inc" );?>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .quiz-container {
-            width: 70%;
-            margin: auto;
-        }
-
-        .board-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .category-link {
-            font-size: 1em;
-            color: #555;
-            text-decoration: none;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .quiz-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .quiz-header {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .quiz-meta {
-            color: #555;
-            font-size: 0.8em;
-            margin-bottom: 10px;
-        }
-
-        .button-container {
-            overflow: hidden;
-        }
-
-        .logout-button {
-            float: left;
-        }
-
-        .write-button {
-            float: right;
-        }
-
-        .button-container div {
-            width: 50%;
-            box-sizing: border-box;
-        }
     </style>
     <script>
         function confirmLogout() {
@@ -99,10 +34,13 @@
 <body>
     
     <div class="quiz-container">
-        <div class="board-title">
-            <div>퀴즈 게시판</div>
-            <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
-        </div>
+            <div class="board-title">
+                <div style="color:green;">퀴즈 게시판</div>
+                <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
+                    <a href="./purchase.php" class="category-link" >포인트 교환</a>
+                    <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
+                <?php } ?>
+            </div>
         <?php if(!$s_id){/* 로그인 전  */ ?>
     <p>
         <div class="quiz-card" >
@@ -131,9 +69,6 @@
             // 퀴즈 게시판 출력
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    
-
-                    
                     echo '<div class="quiz-card">';
                     echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
                     echo '<div class="quiz-meta">작성자 ID: ' . $row["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';

@@ -26,7 +26,11 @@
   </head>
 
   <body>
-    <center>
+    <div class="quiz-container">
+        <div class="board-title">
+            <div>퀴즈 게시판</div>
+            <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
+        </div>
 
       <?PHP
         include( "./config.cfg" );
