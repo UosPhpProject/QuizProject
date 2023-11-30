@@ -56,6 +56,8 @@
           exit;
         }
         
+        $nickname = $_SESSION["nickname"];
+        echo $nickname;
 
         #mysqli_select_db( $con, "project" );
         
@@ -144,7 +146,7 @@
 
       <table>
         <tr align="left">
-          <a href='.write_quiz.php?quiz_id=' . $quiz_id> 문의하기</a>;
+          <a href='./write_quiz.php?quiz_id=' . $quiz_id> 문의하기</a>;
         </tr>
         <tr align="right">
           <td>
@@ -152,7 +154,7 @@
               if($cur_user_id == $user_id) {
                 echo '<a href=';
                 #작동확인
-                dest_url( "./delete.php?quiz_id=$quiz_id", $user_id );
+                dest_url( "./delete.php?quiz_id=$quiz_id", $quiz_id );
                 echo '>삭제</a>';
               } ?>
             

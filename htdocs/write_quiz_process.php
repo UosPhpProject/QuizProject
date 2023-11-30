@@ -14,19 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 세션에서 사용자 정보를 가져옵니다.
     $user_id = $_SESSION["user_id"];
-    $nickname = $_SESSION["nickname"];
 
     // 폼에서 퀴즈 정보를 가져옵니다.
     $quiz_content = $_POST["quizTitle"];
     $correct_answer = $_POST["quizAnswer"];
     $views = 0; // 초기 조회수
-    $points = 0; // 초기 점수, 원하는 기본값으로 설정하세요.
+    $points = 1500; // 초기 점수, 원하는 기본값으로 설정하세요.
     $created_at = date("Y-m-d H:i:s"); // 현재 날짜와 시간
 
 
     // 퀴즈를 데이터베이스에 추가합니다.
-    $sql = "INSERT INTO quiz (quiz_content, user_id, views, points, created_at, correct_answer, nickname) 
-            VALUES ('$quiz_content', '$user_id', '$views', '$points', '$created_at', '$correct_answer', '$nickname')";
+    $sql = "INSERT INTO quiz (quiz_content, user_id, views, points, created_at, correct_answer) 
+            VALUES ('$quiz_content', '$user_id', '$views', '$points', '$created_at', '$correct_answer')";
 
     if ($conn->query($sql) === TRUE) {
         // 퀴즈가 성공적으로 추가되었을 때
