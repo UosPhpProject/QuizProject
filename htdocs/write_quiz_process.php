@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quiz_content = $_POST["quizTitle"];
     $correct_answer = $_POST["quizAnswer"];
     $views = 0; // 초기 조회수
-    $points = 0; // 초기 점수, 원하는 기본값으로 설정하세요.
+    $points = 500; // 초기 점수, 원하는 기본값으로 설정하세요.
     $created_at = date("Y-m-d H:i:s"); // 현재 날짜와 시간
 
 
