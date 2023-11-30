@@ -56,8 +56,6 @@
           exit;
         }
         
-        $nickname = $_SESSION["nickname"];
-        echo $nickname;
 
         #mysqli_select_db( $con, "project" );
         
@@ -152,10 +150,8 @@
           <td>
             <?php
               if($cur_user_id == $user_id) {
-                echo '<a href=';
+                echo '<a href=./delete.php?quiz_id='.$quiz_id.'> 삭제</a>';
                 #작동확인
-                dest_url( "./delete.php?quiz_id=$quiz_id", $quiz_id );
-                echo '>삭제</a>';
               } ?>
             
           

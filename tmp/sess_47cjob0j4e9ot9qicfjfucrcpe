@@ -1,1 +1,1 @@
-email|s:17:"dummy@example.com";permission|s:1:"1";user_id|s:1:"1";nickname|N;
+email|s:17:"dummy@example.com";permission|s:1:"1";user_id|s:1:"1";nickname|s:9:"DummyUser";quiz_content|s:6:"퀴즈";correct_answer|s:6:"정답";views|i:0;points|i:500;created_at|s:19:"2023-11-30 09:47:31";

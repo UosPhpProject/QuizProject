@@ -34,7 +34,7 @@
     echo "
         <script type=\"text/javascript\">
             alret(\"삭제 되었습니다.\");
-            location.href = \"../welcome.php\";
+            location.href = \"./welcome.php\";
         </script>
     ";
 ?>
