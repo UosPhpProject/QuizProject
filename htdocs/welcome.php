@@ -32,15 +32,9 @@
     </script>
 </head>
 <body>
-    
-    <div class="quiz-container">
-            <div class="board-title">
-                <div style="color:green;">퀴즈 게시판</div>
-                <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
-                    <a href="./purchase.php" class="category-link" >포인트 교환</a>
-                    <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
-                <?php } ?>
-            </div>
+    <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
+        <?php include("./menu_bar.php");?>
+            
         <?php if(!$s_id){/* 로그인 전  */ ?>
     <p>
         <div class="quiz-card" >
@@ -65,13 +59,16 @@
             $result = $conn->query($sql);
 
 
-
             // 퀴즈 게시판 출력
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
+                    $id=$row["user_id"];
+                    $sql="SELECT * FROM user WHERE user_id=$id";
+                    $result1=$conn->query($sql);
+                    $name=mysqli_fetch_array($result1);
                     echo '<div class="quiz-card">';
                     echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $row["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
+                    echo '<div class="quiz-meta">작성자 ID: ' . $name["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
                 }
