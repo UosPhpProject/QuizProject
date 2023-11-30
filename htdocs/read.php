@@ -144,7 +144,7 @@
 
       <table>
         <tr align="left">
-          <a href='./write_quiz.php?quiz_id=' . $quiz_id> 문의하기</a>;
+          <a href='write_inquiry.php?quiz_id=<?php echo $quiz_id; ?>'> 문의하기</a>
         </tr>
         <tr align="right">
           <td>

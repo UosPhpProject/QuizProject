@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
     $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
     // echo "Session ID : ".$s_id." / Name : ".$s_name;
@@ -34,24 +33,7 @@
 <body>
     
 
-    <!--<div class="quiz-container">
-            <div class="board-title">
-                <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
-                <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
-                    <a href="./purchase.php" class="category-link" >포인트 교환</a>
-                    <div style="color:green;">문의 게시판</div>
-                <?php } ?>
-            </div>
-        <?php if(!$s_id){/* 로그인 전  */ ?>
-    <p>
-        <div class="quiz-card" >
-        <div class="quiz-header">
-        <a href="./login.php">로그인</a>
-        <a href="./join.php">회원가입</a>
-        </div>
-        </div>
-    </p>-->
-    <?php #} else{ ?>
+    
 
     <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
         <?php include("./menu_bar.php");?>
@@ -77,7 +59,7 @@
             if ($resultInquiry->num_rows > 0) {
                 while($row = $resultInquiry->fetch_assoc()) {
                     echo '<div class="quiz-card">';
-                    echo '<div class="quiz-header"><a href="./read_inquiry.php?inquiry_id=' . $row["inquiry_id"] . '">' . $row["inquiry_content"] . '</a></div>';
+                    echo '<div class="quiz-header">' . $row["inquiry_content"] . '</a></div>';
                     echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
@@ -95,7 +77,7 @@
             $conn->close();
             echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
             echo '<button type="submit" onclick="location.href=\'write_inquiry.php\'" class="write-button">글쓰기</button>';
-        }
+        
         ?>
         
     </div>
