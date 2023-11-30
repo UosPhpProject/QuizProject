@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
-    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
-    // echo "Session ID : ".$s_id." / Name : ".$s_name;
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +15,7 @@
             if (confirmLogout) {
                 // 사용자가 확인을 선택한 경우
                 alert("로그아웃 되었습니다.");
-                location.replace('logout.php');
+                location.replace('./welcome.php');
             } else {
                 // 사용자가 취소를 선택한 경우
                 alert("로그아웃이 취소되었습니다.");

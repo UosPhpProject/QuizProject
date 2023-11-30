@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
-    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
-    // echo "Session ID : ".$s_id." / Name : ".$s_name;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +52,11 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
+            $sql="SELECT * FROM user WHERE email='$s_name'";
+            $result=$conn->query($sql);
+            $row=$result->fetch_assoc();
+            echo '<div>'.$row["nickname"].' 유저님 현재 전환 가능한 포인트 '.$row["points"].'점 있습니다 </div>';
+
             // 퀴즈 데이터 가져오기
             $sql = "SELECT * FROM product ORDER BY price DESC";
             $result = $conn->query($sql);
@@ -67,9 +65,9 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="quiz-card">';
-                    echo '<div class="quiz-header"><img src="img/'.$row["image"].'"width=100/>'. '</div>';
-                    echo '<div class="quiz-meta">상품: ' . $row["product_name"] . ' | 가격: ' . $row["price"] . '</div>';
-                    echo '<div class="quiz-header"><a href="./buy.php?price=' . $row["price"] . '">' ."구매".'</a></div>';
+                    echo '<div class="quiz-product"><img src="img/'.$row["image"].'"width=100/>'. '</div>';
+                    echo '<div class="quiz-header">상품: ' . $row["product_name"] . ' | 가격: ' . $row["price"] . '</div>';
+                    echo '<div class="quiz-buy"><a href="./buy.php?price=' . $row["price"] . '">' ."구매".'</a></div>';
                     echo '</div>';
                     echo '</a>';
                 }
@@ -84,8 +82,6 @@
             // }
             // 연결 종료
             $conn->close();
-            echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
-            echo '<button type="submit" onclick="location.href=\'write_quiz.php\'" class="write-button">글쓰기</button>';
         }
     ?>
         
