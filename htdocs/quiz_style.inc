@@ -31,6 +31,13 @@ body {
             margin-bottom: 10px;
         }
 
+        .quiz-product {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align : center;
+        }
+
         .quiz-meta {
             color: #555;
             font-size: 0.8em;
@@ -45,6 +52,18 @@ body {
 
         .quiz-info {
             margin-left: 10px;
+        }
+
+        .quiz-buy{
+            font-size=1.2em;
+            font-weight:bold;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            padding:10px;
+            text-align : center;
+            margin-bottom: 10px;
+            background-color:#BBDEFB;
         }
 
         .answer{

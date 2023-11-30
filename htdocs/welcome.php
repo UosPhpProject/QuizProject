@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
-    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
-    // echo "Session ID : ".$s_id." / Name : ".$s_name;
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

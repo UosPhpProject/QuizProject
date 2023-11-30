@@ -1,4 +1,10 @@
-
+<?php
+    session_start();
+    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
+    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
+    // echo "Session ID : ".$s_id." / Name : ".$s_name;
+?>
+            
             <div class="board-title">
                 <a href="./welcome.php" class="category-link" style="color:green;">퀴즈 게시판</a>
                 <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
