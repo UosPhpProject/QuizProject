@@ -14,6 +14,18 @@
     <style>
         <?PHP include( "./quiz_style.inc" );?>
         <?PHP include( "./common_style.inc" );?>
+        
+        .quiz-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ccc;
+        padding: 10px;
+        }
+
+        .delBtn {
+            background-color: red;
+        }
     </style>
     <script>
         function confirmLogout() {
@@ -28,6 +40,11 @@
                 alert("로그아웃이 취소되었습니다.");
             }
         }
+
+        function deleteInquiry($quiz_id) {
+            location.replace('delete.php?quiz_id=' + $quiz_id);
+            alert("삭제되었습니다.");
+        }
     </script>
 </head>
 <body>
@@ -37,8 +54,6 @@
 
     <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
         <?php include("./menu_bar.php");?>
-        <!--<div class="board-title"></div>-->
-            
 
     <?php   
             // 데이터베이스 연결 설정
@@ -53,14 +68,19 @@
             $sqlInquiry = "SELECT * FROM inquiry ORDER BY created_at DESC";
             $resultInquiry = $conn->query($sqlInquiry);
 
-
-
-            // 퀴즈 게시판 출력
+            // 문의 게시판 출력
             if ($resultInquiry->num_rows > 0) {
                 while($row = $resultInquiry->fetch_assoc()) {
+                    $quiz_id = $row["quiz_id"];
+
                     echo '<div class="quiz-card">';
+                    echo '<div>';
                     echo '<div class="quiz-header">' . $row["inquiry_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"] . '</div>';
+                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"]. '</div>';
+                    echo '</div>';
+                    echo '<div>';
+                    echo '<button class="delBtn" type="submit" onclick="deleteInquiry(' . $quiz_id . ')">퀴즈삭제</button>';
+                    echo '</div>';
                     echo '</div>';
                     echo '</a>';
                 }
