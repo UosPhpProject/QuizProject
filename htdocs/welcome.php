@@ -126,16 +126,6 @@
             $sql = "SELECT * FROM quiz ORDER BY created_at DESC";
             $result = $conn->query($sql);
 
-            if (isset($_GET['quiz_id'])) {
-                $quizId = $_GET['quiz_id'];
-            
-                // quiz_id가 정의되었는지 확인
-                if (!empty($quizId)) {
-                    // SQL 쿼리에 quiz_id 추가
-                    $sqlUpdateViews = "UPDATE quiz SET views = views + 1 WHERE quiz_id = $quizId";
-                    $conn->query($sqlUpdateViews);
-                }
-            }
 
 
             // 퀴즈 게시판 출력
@@ -146,7 +136,7 @@
                     
                     echo '<div class="quiz-card">';
                     echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
+                    echo '<div class="quiz-meta">작성자 ID: ' . $row["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
                 }

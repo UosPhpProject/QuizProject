@@ -1,44 +1,50 @@
 <?php
 session_start();
 
-// 로그인 여부 확인
+// 사용자가 로그인되어 있는지 확인합니다.
 if (!isset($_SESSION["permission"])) {
     header("Location: login.php");
     exit();
 }
 
-// 폼에서 전송된 데이터 처리
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // 데이터베이스 연결 설정
+// 폼이 제출되었는지 확인합니다.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 데이터베이스 연결 설정을 포함합니다.
     include "./dbcon.php";
 
-    // 연결 확인
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    // 세션에서 사용자 정보를 가져옵니다.
+    $user_id = $_SESSION["user_id"];
+    $nickname = $_SESSION["nickname"];
+
+    // 폼에서 퀴즈 정보를 가져옵니다.
+    $quiz_content = $_POST["quizTitle"];
+    $correct_answer = $_POST["quizAnswer"];
+    $views = 0; // 초기 조회수
+    $points = 0; // 초기 점수, 원하는 기본값으로 설정하세요.
+    $created_at = date("Y-m-d H:i:s"); // 현재 날짜와 시간
+
+    // 입력값이 빈 값인지 확인합니다.
+    if (empty($quiz_content) || empty($correct_answer)) {
+        echo '<script>alert("퀴즈 제목과 정답을 모두 입력해주세요.");</script>';
+        echo '<script>window.location.href = "write_quiz.php";</script>';
+        exit();
     }
 
-    $quizTitle = $_POST["quizTitle"];
-    $quizAnswer = $_POST["correct_answer"];
-    $userId = $_SESSION["permission"];
-    $createdAt = date("Y-m-d");
+    // 퀴즈를 데이터베이스에 추가합니다.
+    $sql = "INSERT INTO quiz (quiz_content, user_id, views, points, created_at, correct_answer, nickname) 
+            VALUES ('$quiz_content', '$user_id', '$views', '$points', '$created_at', '$correct_answer', '$nickname')";
 
-    // 데이터베이스에 퀴즈 등록
-    $sql = "INSERT INTO quiz (quiz_content, correct_answer, user_id, created_at,views) 
-            VALUES ('$quizTitle', '$quizAnswer', '$userId', '$createdAt',0)";
-    $result = $conn->query($sql);
-
-    // 연결 종료
-    $conn->close();
-
-    echo '<script>';
-    if ($result) {
-        // 등록이 성공했을 경우
-        echo 'alert("퀴즈가 성공적으로 등록되었습니다.");';
-        echo 'window.location.href = "welcome.php";'; // welcome.php로 이동
+    if ($conn->query($sql) === TRUE) {
+        // 퀴즈가 성공적으로 추가되었을 때
+        echo '<script>alert("퀴즈가 성공적으로 등록되었습니다.");</script>';
+        echo '<script>window.location.href = "welcome.php";</script>';
+        exit();
     } else {
-        // 등록이 실패한 경우
-        echo 'alert("퀴즈 등록에 실패했습니다.");';
+        // 퀴즈 추가 중 오류가 발생한 경우 오류 메시지를 출력합니다.
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    echo '</script>';
+
+    // 데이터베이스 연결을 닫습니다.
+    $conn->close();
 }
 ?>
