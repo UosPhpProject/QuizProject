@@ -25,6 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </script>
         ";
     }
+
+    if (strlen($password) < 4) {
+        echo "
+        <script type=\"text/javascript\">
+            alert(\"비밀번호는 4자 이상입니다.\");
+            history.back();
+        </script>
+        ";
+    }
     // 데이터베이스에 사용자 추가
     else {
         $sql = "INSERT INTO user (permission,nickname, password, email,points, created_at) VALUES (1,'$nickname', '$password', '$email',0, '$date')";

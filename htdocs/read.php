@@ -27,20 +27,10 @@
 
   <body>
     <div class="quiz-container">
-        <div class="board-title">
-            <div>퀴즈 게시판</div>
-            <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
-        </div>
-
       <?PHP
         include( "./config.cfg" );
         include( "./functions.inc" );
-
-        // 세션에서 접속자 정보 가져오기
-        session_start();
-        //var_dump($_SESSION);
-        $cur_user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
+        include("./menu_bar.php");
 
         // quiz_id 값 읽어오기
         $quiz_id = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
@@ -56,19 +46,6 @@
           exit;
         }
         
-
-        #mysqli_select_db( $con, "project" );
-        
-        #------------- 데이터베이스에서 글의 정보 검색 -------------#
-        #$answer_id = 1; #임시
-        
-        // $query = "select answer_id, quiz_id, user_id, answer_content, count, created_at 
-        //   from answer where answer_id=$answer_id";
-        // $result = mysqli_query( $con, $query ) or die ( mysqli_error($con) );
-        // list( $answer_id, $quiz_id, $user_id, $answer_content, $count, $created_at ) 
-        //   = mysqli_fetch_array( $result );
-
-
         $query_quiz = "SELECT quiz_content, views, points, user_id, correct_answer, created_at FROM quiz WHERE quiz_id=$quiz_id";
         $result_quiz = mysqli_query($con, $query_quiz);
         list($quiz_content, $views, $points, $user_id, $correct_answer, $created_at) = mysqli_fetch_array($result_quiz);
@@ -110,7 +87,7 @@
       </table>
 
       
-      <?php if ($count == 3) {
+      <?php if ($count == 3 || $cur_user_id==$user_id ) {
         echo '<table class="articel_table">';
         echo '<tr>';
         echo '<td colspan="2"><div class="answer">' . $correct_answer . '</div></td>';

@@ -1,6 +1,7 @@
 <?php
     session_start();
     $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
+    $cur_user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
     $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
     // echo "Session ID : ".$s_id." / Name : ".$s_name;
 ?>

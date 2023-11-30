@@ -24,7 +24,6 @@ if($num) {
 $result_sql3 = mysqli_query($conn, $sql3);
 
 $result_sql2 = mysqli_query($conn, $sql2);
-
 list($answer_content, $count) = mysqli_fetch_array($result_sql2);
 
 
@@ -41,6 +40,11 @@ if ($c_answer == $answer_content) {
     // count 3로 change
     $sql6 = "update answer set count = 3 where quiz_id='$quiz_id' and user_id='$user_id';";
     $result_sql6 = mysqli_query($conn, $sql6);
+    
+    // 맞추면 배점 감소
+    $sql7="UPDATE quiz SET points=points-200 WHERE quiz_id=$quiz_id";
+    $result_sql7=mysqli_query($conn, $sql7);
+
     mysqli_close( $conn );
     echo "
     <script type=\"text/javascript\">

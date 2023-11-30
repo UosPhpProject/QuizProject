@@ -1,5 +1,7 @@
 <?php 
     include("./menu_bar.php");
+?>
+<?php
     include("./dbcon.php");
     $quiz_id = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
     //삭제할 퀴즈 아이디 받아오기
@@ -37,4 +39,5 @@
             location.href = \"./welcome.php\";
         </script>
     ";
+
 ?>
