@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+// quiz_id 값 읽어오기
+$quiz_id = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
+
+// quiz_id 값이 없으면 오류 처리 또는 기본값 설정
+if (!$quiz_id) {
+    die("quiz_id를 제공해주세요.");
+}
+
 // 로그인 여부 확인
 if (!isset($_SESSION["permission"])) {
     header("Location: login.php");
@@ -76,9 +84,19 @@ if (!isset($_SESSION["permission"])) {
 
         <form action="write_inquiry_process.php" method="post" class="quiz-form">
             <div class="form-group">
-                <label for="quizTitle">문의 내용:</label>
-                <input type="text" name="quizTitle" id="quizTitle" required>
+                <input type="hidden" name="quiz_id" value="<?=$quiz_id?>">
+            </div>  
+        
+            <div class="form-group">
+                <label for="inquiry_content">문의 내용:</label>
+                <input type="text" name="inquiry_content" id="inquiry_content" required>
             </div>
+
+            
+            
+            
+
+            
 
             <div class="form-group">
                 <button type="submit">등록</button>
