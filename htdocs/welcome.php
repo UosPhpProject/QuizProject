@@ -15,7 +15,7 @@
             if (confirmLogout) {
                 // 사용자가 확인을 선택한 경우
                 alert("로그아웃 되었습니다.");
-                location.replace('./welcome.php');
+                location.replace('./logout.php');
             } else {
                 // 사용자가 취소를 선택한 경우
                 alert("로그아웃이 취소되었습니다.");
