@@ -28,7 +28,7 @@
   <body>
     <div class="quiz-container">
         <div class="board-title">
-            <div>퀴즈 게시판</div>
+            <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
             <a href="./inquiry_board.php" class="category-link">문의 게시판</a>
         </div>
 
@@ -42,14 +42,30 @@
         $cur_user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 
-        // quiz_id 값 읽어오기
-        $quiz_id = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
+        // inquiry_id 값 읽어오기
+        $inquiry_id = isset($_GET['inquiry_id']) ? $_GET['inquiry_id'] : null;
 
-        // quiz_id 값이 없으면 오류 처리 또는 기본값 설정
-        if (!$quiz_id) {
-            die("quiz_id를 제공해주세요.");
+        // inquiry_id 값이 없으면 오류 처리 또는 기본값 설정
+        if (!$inquiry_id) {
+            die("inquiry_id 제공해주세요.");
         }
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $con = mysqli_connect( "localhost", "phpadmin", "phpadmin" , "project" );
         if (mysqli_connect_errno()) {
           printf("%s \n", mysqli_connect_error());
@@ -69,18 +85,18 @@
         //   = mysqli_fetch_array( $result );
 
 
-        $query_quiz = "SELECT quiz_content, views, points, user_id, correct_answer, created_at FROM quiz WHERE quiz_id=$quiz_id";
-        $result_quiz = mysqli_query($con, $query_quiz);
-        list($quiz_content, $views, $points, $user_id, $correct_answer, $created_at) = mysqli_fetch_array($result_quiz);
+        // $query_quiz = "SELECT quiz_content, views, points, user_id, correct_answer, created_at FROM quiz WHERE quiz_id=$quiz_id";
+        // $result_quiz = mysqli_query($con, $query_quiz);
+        // list($quiz_content, $views, $points, $user_id, $correct_answer, $created_at) = mysqli_fetch_array($result_quiz);
 
         $query_user = "select nickname from user where user_id=$user_id";
         # 작성자 user와 접속자 user를 구분할 것
         $result_user = mysqli_query($con, $query_user);
         list($nickname) = mysqli_fetch_array($result_user);
 
-        $query_answer = "select count from answer where user_id='$cur_user_id' and quiz_id='$quiz_id';";
-        $result_answer = mysqli_query($con, $query_answer);
-        list($count) = mysqli_fetch_array($result_answer);
+        // $query_answer = "select count from answer where user_id='$cur_user_id' and quiz_id='$quiz_id';";
+        // $result_answer = mysqli_query($con, $query_answer);
+        // list($count) = mysqli_fetch_array($result_answer);
 
        
 
@@ -143,23 +159,20 @@
       <br>
 
       <table>
-        <tr align="left">
-          <a href='.write_quiz.php?quiz_id=' . $quiz_id> 문의하기</a>;
-        </tr>
         <tr align="right">
           <td>
             <?php
               if($cur_user_id == $user_id) {
                 echo '<a href=';
-                #작동확인
-                dest_url( "./delete.php?quiz_id=$quiz_id", $user_id );
+                dest_url( "./delete.php", $user_id );
                 echo '>삭제</a>';
+                #권한설정해주기
               } ?>
             
           
           
           
-          <a href="./welcome.php">목록</a></td>
+          <a href="./read_inquiry.php">목록</a></td>
         </tr>
       </table>
     </center>

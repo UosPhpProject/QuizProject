@@ -33,7 +33,8 @@
 </head>
 <body>
     
-    <div class="quiz-container">
+
+    <!--<div class="quiz-container">
             <div class="board-title">
                 <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
                 <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
@@ -49,8 +50,14 @@
         <a href="./join.php">회원가입</a>
         </div>
         </div>
-    </p>
-    <?php } else{ ?>
+    </p>-->
+    <?php #} else{ ?>
+
+    <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
+        <?php include("./menu_bar.php");?>
+        <!--<div class="board-title"></div>-->
+            
+
     <?php   
             // 데이터베이스 연결 설정
             include "./dbcon.php";
