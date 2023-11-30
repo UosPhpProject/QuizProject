@@ -78,9 +78,11 @@
                     echo '<div class="quiz-header">' . $row["inquiry_content"] . '</a></div>';
                     echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"]. '</div>';
                     echo '</div>';
-                    echo '<div>';
-                    echo '<button class="delBtn" type="submit" onclick="deleteInquiry(' . $quiz_id . ')">퀴즈삭제</button>';
-                    echo '</div>';
+                    if($s_id == 0) {
+                        echo '<div>';
+                        echo '<button class="delBtn" type="submit" onclick="deleteInquiry(' . $quiz_id . ')">퀴즈삭제</button>';
+                        echo '</div>';
+                    }
                     echo '</div>';
                     echo '</a>';
                 }

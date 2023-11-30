@@ -35,7 +35,7 @@
     /* 페이지 이동 */
     echo "
         <script type=\"text/javascript\">
-            alret(\"삭제 되었습니다.\");
+            alert(\"삭제 되었습니다.\");
             location.href = \"./welcome.php\";
         </script>
     ";
