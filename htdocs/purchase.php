@@ -25,7 +25,15 @@
 </head>
 <body>
     <div class="quiz-container">
+        <!--<div class="board-title">
+            <a herf="./welcome.php" class="category-link">퀴즈 게시판</a>-->
+            <?php #if($s_id){ ?>
+                <!-- <a href="./purchase.php" class="category-link" >포인트 교환</a>
+                <a href="./inquiry_board.php" class="category-link">문의 게시판</a> -->
+            <?php #} ?>
+        <!--</div>-->
         <?php include("./menu_bar.php");?>
+        
         <?php if(!$s_id){/* 로그인 전  */ ?>
     <p>
         <div class="quiz-card" >

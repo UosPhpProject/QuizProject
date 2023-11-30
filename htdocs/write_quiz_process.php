@@ -23,12 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $points = 0; // 초기 점수, 원하는 기본값으로 설정하세요.
     $created_at = date("Y-m-d H:i:s"); // 현재 날짜와 시간
 
-    // 입력값이 빈 값인지 확인합니다.
-    if (empty($quiz_content) || empty($correct_answer)) {
-        echo '<script>alert("퀴즈 제목과 정답을 모두 입력해주세요.");</script>';
-        echo '<script>window.location.href = "write_quiz.php";</script>';
-        exit();
-    }
 
     // 퀴즈를 데이터베이스에 추가합니다.
     $sql = "INSERT INTO quiz (quiz_content, user_id, views, points, created_at, correct_answer, nickname) 

@@ -1,11 +1,8 @@
 <?php
     session_start();
-
-    // 로그인 여부 확인
-    if (!isset($_SESSION["permission"])) {
-        header("Location: login.php");
-        exit();
-    }
+    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
+    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
+    // echo "Session ID : ".$s_id." / Name : ".$s_name;
 ?>
 
 
@@ -18,70 +15,6 @@
     <style>
         <?PHP include( "./quiz_style.inc" );?>
         <?PHP include( "./common_style.inc" );?>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .quiz-container {
-            width: 70%;
-            margin: auto;
-        }
-
-        .board-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .category-link {
-            font-size: 1em;
-            color: #555;
-            text-decoration: none;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .quiz-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .quiz-header {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .quiz-meta {
-            color: #555;
-            font-size: 0.8em;
-            margin-bottom: 10px;
-        }
-
-        .button-container {
-            overflow: hidden;
-        }
-
-        .logout-button {
-            float: left;
-        }
-
-        .write-button {
-            float: right;
-        }
-
-        .button-container div {
-            width: 50%;
-            box-sizing: border-box;
-        }
     </style>
     <script>
         function confirmLogout() {
@@ -100,11 +33,31 @@
 </head>
 <body>
     
-    <div class="quiz-container">
-        <div class="board-title">
-            <div>문의 게시판</div>
-            <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
-    </div>
+
+    <!--<div class="quiz-container">
+            <div class="board-title">
+                <a href="./welcome.php" class="category-link">퀴즈 게시판</a>
+                <?php if($s_id){ /*로그인 안했다면 안보여줌 */?> 
+                    <a href="./purchase.php" class="category-link" >포인트 교환</a>
+                    <div style="color:green;">문의 게시판</div>
+                <?php } ?>
+            </div>
+        <?php if(!$s_id){/* 로그인 전  */ ?>
+    <p>
+        <div class="quiz-card" >
+        <div class="quiz-header">
+        <a href="./login.php">로그인</a>
+        <a href="./join.php">회원가입</a>
+        </div>
+        </div>
+    </p>-->
+    <?php #} else{ ?>
+
+    <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
+        <?php include("./menu_bar.php");?>
+        <!--<div class="board-title"></div>-->
+            
+
     <?php   
             // 데이터베이스 연결 설정
             include "./dbcon.php";
@@ -117,6 +70,8 @@
             // 문의 데이터 가져오기
             $sqlInquiry = "SELECT * FROM inquiry ORDER BY created_at DESC";
             $resultInquiry = $conn->query($sqlInquiry);
+
+
 
             // 퀴즈 게시판 출력
             if ($resultInquiry->num_rows > 0) {
@@ -140,7 +95,7 @@
             $conn->close();
             echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
             echo '<button type="submit" onclick="location.href=\'write_inquiry.php\'" class="write-button">글쓰기</button>';
-        
+        }
         ?>
         
     </div>
