@@ -60,23 +60,19 @@
                     $name=mysqli_fetch_array($result1);
                     echo '<div class="quiz-card">';
                     echo '<div class="quiz-header"><a href="./read.php?quiz_id=' . $row["quiz_id"] . '">' . $row["quiz_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $name["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
+                    echo '<div class="quiz-meta">작성자: ' . $name["nickname"] . ' | 조회수: ' . $row["views"] . ' | 배점: ' . $row["points"] . ' | 작성일: ' . $row["created_at"] . '</div>';
                     echo '</div>';
                     echo '</a>';
                 }
             } else {
                 echo "게시글이 없습니다.";
             }
-            // $ses= $_SESSION['permission'];
-            // if($ses=="0"){
-            //     echo '<div class="quiz-card">';
-            //     echo '<div class="quiz-header">'. "문의 게시판".'</div>';
-            //     echo '</div>';
-            // }
-            // 연결 종료
+            
             $conn->close();
             echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
-            echo '<button type="submit" onclick="location.href=\'write_quiz.php\'" class="write-button">글쓰기</button>';
+            if ($s_id==1){
+                echo '<button type="submit" onclick="location.href=\'write_quiz.php\'" class="write-button">글쓰기</button>';
+            }
         }
         ?>
         

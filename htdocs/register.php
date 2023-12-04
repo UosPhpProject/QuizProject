@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($duplicate_result->num_rows > 0) {
         echo "
         <script type=\"text/javascript\">
-            alert(\"동일한 아이디가 있습니다.\");
+            alert(\"동일한 이메일이 있습니다.\");
             history.back();
         </script>
         ";

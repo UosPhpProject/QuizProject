@@ -41,7 +41,7 @@
         $result = mysqli_query($conn, $sql);
         echo "
             <script type=\"text/javascript\">
-                alert(\"구매완료 :".$after_money."</div>\");
+                alert(\"구매완료\");
                 location.href = \"../purchase.php\";
             </script>
         ";

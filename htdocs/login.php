@@ -26,9 +26,9 @@
   return false;
   };
   var u_id_len = u_id.value.length;
-  if( u_id_len < 4 || u_id_len > 20){
+  if( u_id_len < 4 || u_id_len > 30){
   var err_txt = document.querySelector(".err_id");
-  err_txt.textContent = "아이디는 4~20글자만 입력할 수 있습니다.";
+  err_txt.textContent = "아이디는 4~30글자만 입력할 수 있습니다.";
   u_id.focus();
   return false;
   };

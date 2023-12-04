@@ -45,7 +45,8 @@
           printf("%s \n", mysqli_connect_error());
           exit;
         }
-        
+        $sql3 = "UPDATE quiz SET views = views+1 WHERE quiz_id=$quiz_id";
+        $result=mysqli_query($con, $sql3);
         $query_quiz = "SELECT quiz_content, views, points, user_id, correct_answer, created_at FROM quiz WHERE quiz_id=$quiz_id";
         $result_quiz = mysqli_query($con, $query_quiz);
         list($quiz_content, $views, $points, $user_id, $correct_answer, $created_at) = mysqli_fetch_array($result_quiz);
@@ -87,7 +88,7 @@
       </table>
 
       
-      <?php if ($count == 3 || $cur_user_id==$user_id ) {
+      <?php if ($count == 3 || $cur_user_id==$user_id || $s_id==99 ) {
         echo '<table class="articel_table">';
         echo '<tr>';
         echo '<td colspan="2"><div class="answer">' . $correct_answer . '</div></td>';

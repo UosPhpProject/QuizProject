@@ -1,10 +1,3 @@
-<?php
-    $s_id = isset($_SESSION["permission"])? $_SESSION["permission"]:"";
-    $s_name = isset($_SESSION["email"])? $_SESSION["email"]:"";
-    // echo "Session ID : ".$s_id." / Name : ".$s_name;
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,9 +42,6 @@
 </head>
 <body>
     
-
-    
-
     <div class="quiz-container"> <!-- 메뉴바 이전에 미리 생성 -->
         <?php include("./menu_bar.php");?>
 
@@ -72,13 +62,16 @@
             if ($resultInquiry->num_rows > 0) {
                 while($row = $resultInquiry->fetch_assoc()) {
                     $quiz_id = $row["quiz_id"];
+                    $sql1="SELECT quiz_content FROM quiz WHERE quiz_id=$quiz_id";
+                    $result_quiz=$conn->query($sql1);
+                    $result=mysqli_fetch_row($result_quiz);
 
                     echo '<div class="quiz-card">';
                     echo '<div>';
                     echo '<div class="quiz-header">' . $row["inquiry_content"] . '</a></div>';
-                    echo '<div class="quiz-meta">작성자 ID: ' . $row["user_id"] .  ' | 작성일: ' . $row["created_at"]. '</div>';
+                    echo '<div class="quiz-meta">퀴즈 내용 : '. $result[0]. ' |  작성자 ID: ' . $row["user_id"] .  ' | 문의 작성일: ' . $row["created_at"]. '</div>';
                     echo '</div>';
-                    if($s_id == 0) {
+                    if($s_id == 99) {
                         echo '<div>';
                         echo '<button class="delBtn" type="submit" onclick="deleteInquiry(' . $quiz_id . ')">퀴즈삭제</button>';
                         echo '</div>';
@@ -98,7 +91,6 @@
             // 연결 종료
             $conn->close();
             echo '<button type="submit" onclick="confirmLogout()">로그아웃</button>';
-            echo '<button type="submit" onclick="location.href=\'write_inquiry.php\'" class="write-button">글쓰기</button>';
         
         ?>
         

@@ -991,3 +991,57 @@
 [Thu Nov 30 18:48:26.360858 2023] [ssl:warn] [pid 6456:tid 200] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
 [Thu Nov 30 18:48:26.439569 2023] [mpm_winnt:notice] [pid 6456:tid 200] AH00354: Child: Starting 150 worker threads.
 [Thu Nov 30 18:48:39.345696 2023] [php:warn] [pid 6456:tid 1916] [client ::1:56571] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Thu Nov 30 18:56:27.252894 2023] [ssl:warn] [pid 14436:tid 340] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 18:56:27.291920 2023] [core:warn] [pid 14436:tid 340] AH00098: pid file C:/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Nov 30 18:56:27.300980 2023] [ssl:warn] [pid 14436:tid 340] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 18:56:27.365193 2023] [mpm_winnt:notice] [pid 14436:tid 340] AH00455: Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 configured -- resuming normal operations
+[Thu Nov 30 18:56:27.365193 2023] [mpm_winnt:notice] [pid 14436:tid 340] AH00456: Apache Lounge VS16 Server built: Mar  7 2023 13:21:03
+[Thu Nov 30 18:56:27.365193 2023] [core:notice] [pid 14436:tid 340] AH00094: Command line: 'c:\\xampp\\apache\\bin\\httpd.exe -d C:/xampp/apache'
+[Thu Nov 30 18:56:27.365193 2023] [mpm_winnt:notice] [pid 14436:tid 340] AH00418: Parent: Created child process 26356
+[Thu Nov 30 18:56:28.382418 2023] [ssl:warn] [pid 26356:tid 364] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 18:56:28.417128 2023] [ssl:warn] [pid 26356:tid 364] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 18:56:28.483788 2023] [mpm_winnt:notice] [pid 26356:tid 364] AH00354: Child: Starting 150 worker threads.
+[Thu Nov 30 21:50:03.311533 2023] [ssl:warn] [pid 21272:tid 368] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 21:50:03.365795 2023] [core:warn] [pid 21272:tid 368] AH00098: pid file C:/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Nov 30 21:50:03.373778 2023] [ssl:warn] [pid 21272:tid 368] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 21:50:03.452396 2023] [mpm_winnt:notice] [pid 21272:tid 368] AH00455: Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 configured -- resuming normal operations
+[Thu Nov 30 21:50:03.452396 2023] [mpm_winnt:notice] [pid 21272:tid 368] AH00456: Apache Lounge VS16 Server built: Mar  7 2023 13:21:03
+[Thu Nov 30 21:50:03.452396 2023] [core:notice] [pid 21272:tid 368] AH00094: Command line: 'c:\\xampp\\apache\\bin\\httpd.exe -d C:/xampp/apache'
+[Thu Nov 30 21:50:03.468031 2023] [mpm_winnt:notice] [pid 21272:tid 368] AH00418: Parent: Created child process 19988
+[Thu Nov 30 21:50:04.851490 2023] [ssl:warn] [pid 19988:tid 348] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 21:50:04.891895 2023] [ssl:warn] [pid 19988:tid 348] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Nov 30 21:50:04.985994 2023] [mpm_winnt:notice] [pid 19988:tid 348] AH00354: Child: Starting 150 worker threads.
+[Thu Nov 30 21:51:01.581109 2023] [php:warn] [pid 19988:tid 1960] [client ::1:58487] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Fri Dec 01 21:36:59.420078 2023] [ssl:warn] [pid 29036:tid 344] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 01 21:36:59.484687 2023] [core:warn] [pid 29036:tid 344] AH00098: pid file C:/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Dec 01 21:36:59.486953 2023] [ssl:warn] [pid 29036:tid 344] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 01 21:36:59.956850 2023] [mpm_winnt:notice] [pid 29036:tid 344] AH00455: Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 configured -- resuming normal operations
+[Fri Dec 01 21:36:59.956850 2023] [mpm_winnt:notice] [pid 29036:tid 344] AH00456: Apache Lounge VS16 Server built: Mar  7 2023 13:21:03
+[Fri Dec 01 21:36:59.956850 2023] [core:notice] [pid 29036:tid 344] AH00094: Command line: 'c:\\xampp\\apache\\bin\\httpd.exe -d C:/xampp/apache'
+[Fri Dec 01 21:36:59.956850 2023] [mpm_winnt:notice] [pid 29036:tid 344] AH00418: Parent: Created child process 11032
+[Fri Dec 01 21:37:01.308836 2023] [ssl:warn] [pid 11032:tid 384] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 01 21:37:01.355746 2023] [ssl:warn] [pid 11032:tid 384] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 01 21:37:01.433937 2023] [mpm_winnt:notice] [pid 11032:tid 384] AH00354: Child: Starting 150 worker threads.
+[Fri Dec 01 21:39:12.006211 2023] [php:warn] [pid 11032:tid 1908] [client ::1:53487] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Fri Dec 01 21:44:36.860983 2023] [php:warn] [pid 11032:tid 1904] [client ::1:53653] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 13:31:31.666600 2023] [ssl:warn] [pid 24268:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Sun Dec 03 13:31:31.718219 2023] [core:warn] [pid 24268:tid 356] AH00098: pid file C:/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun Dec 03 13:31:31.718219 2023] [ssl:warn] [pid 24268:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Sun Dec 03 13:31:31.872381 2023] [mpm_winnt:notice] [pid 24268:tid 356] AH00455: Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 configured -- resuming normal operations
+[Sun Dec 03 13:31:31.887481 2023] [mpm_winnt:notice] [pid 24268:tid 356] AH00456: Apache Lounge VS16 Server built: Mar  7 2023 13:21:03
+[Sun Dec 03 13:31:31.887481 2023] [core:notice] [pid 24268:tid 356] AH00094: Command line: 'c:\\xampp\\apache\\bin\\httpd.exe -d C:/xampp/apache'
+[Sun Dec 03 13:31:31.887481 2023] [mpm_winnt:notice] [pid 24268:tid 356] AH00418: Parent: Created child process 24664
+[Sun Dec 03 13:31:32.889302 2023] [ssl:warn] [pid 24664:tid 336] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Sun Dec 03 13:31:32.916403 2023] [ssl:warn] [pid 24664:tid 336] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Sun Dec 03 13:31:32.989669 2023] [mpm_winnt:notice] [pid 24664:tid 336] AH00354: Child: Starting 150 worker threads.
+[Sun Dec 03 13:31:39.115316 2023] [php:warn] [pid 24664:tid 1904] [client ::1:53723] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 13:35:01.752547 2023] [php:warn] [pid 24664:tid 1888] [client ::1:53857] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 14:24:37.141533 2023] [php:warn] [pid 24664:tid 1884] [client ::1:54075] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 15:36:47.864704 2023] [php:warn] [pid 24664:tid 1884] [client ::1:55282] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 15:37:03.645938 2023] [php:warn] [pid 24664:tid 1884] [client ::1:55295] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 15:38:35.864537 2023] [php:warn] [pid 24664:tid 1884] [client ::1:55302] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 15:40:06.442013 2023] [php:warn] [pid 24664:tid 1888] [client ::1:55329] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 15:59:52.629879 2023] [php:error] [pid 24664:tid 1884] [client ::1:55550] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gmail.com' at line 1 in C:\\xampp\\htdocs\\register.php:18\nStack trace:\n#0 C:\\xampp\\htdocs\\register.php(18): mysqli->query('SELECT * FROM u...')\n#1 {main}\n  thrown in C:\\xampp\\htdocs\\register.php on line 18, referer: http://localhost/join.php
+[Sun Dec 03 16:12:26.472473 2023] [php:warn] [pid 24664:tid 1888] [client ::1:55831] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php
+[Sun Dec 03 16:18:05.613856 2023] [php:error] [pid 24664:tid 1888] [client ::1:55854] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'project.comment' doesn't exist in C:\\xampp\\htdocs\\delete.php:23\nStack trace:\n#0 C:\\xampp\\htdocs\\delete.php(23): mysqli->query('DELETE FROM com...')\n#1 {main}\n  thrown in C:\\xampp\\htdocs\\delete.php on line 23, referer: http://localhost/read.php?quiz_id=18
+[Sun Dec 03 16:41:03.832313 2023] [php:warn] [pid 24664:tid 1884] [client ::1:56314] PHP Warning:  Undefined array key "nuckname" in C:\\xampp\\htdocs\\login_ok.php on line 61, referer: http://localhost/login.php

@@ -18,10 +18,6 @@
 
     $sql="DELETE FROM answer WHERE quiz_id=$quiz_id";
     $result=$conn->query($sql);
-
-    $sql="DELETE FROM comment WHERE quiz_id=$quiz_id";
-    $result=$conn->query($sql);
-
     
     $sql="DELETE FROM inquiry WHERE quiz_id=$quiz_id";
     $result=$conn->query($sql);

@@ -31,6 +31,9 @@ $sql4 = "select correct_answer from quiz where quiz_id='$quiz_id';";
 $result_sql4 = mysqli_query($conn, $sql4);
 list($c_answer) = mysqli_fetch_array($result_sql4);
 
+$sql10 = "select points from quiz where quiz_id='$quiz_id';";
+$result_sql10 = mysqli_query($conn, $sql10);
+list($c_points) = mysqli_fetch_array($result_sql10);
 
 if ($c_answer == $answer_content) {
     // 유저 포인트 업
@@ -40,11 +43,18 @@ if ($c_answer == $answer_content) {
     // count 3로 change
     $sql6 = "update answer set count = 3 where quiz_id='$quiz_id' and user_id='$user_id';";
     $result_sql6 = mysqli_query($conn, $sql6);
-    
-    // 맞추면 배점 감소
-    $sql7="UPDATE quiz SET points=points-200 WHERE quiz_id=$quiz_id";
-    $result_sql7=mysqli_query($conn, $sql7);
 
+    // 맞추면 배점 감소
+    $sql10 = "select points from quiz where quiz_id='$quiz_id';";
+    $result_sql10 = mysqli_query($conn, $sql10);
+    list($c_points) = mysqli_fetch_array($result_sql10);
+
+    
+    if($c_points>100){
+        $sql7="UPDATE quiz SET points=points-200 WHERE quiz_id=$quiz_id";
+        $result_sql7=mysqli_query($conn, $sql7);
+    }
+    
     mysqli_close( $conn );
     echo "
     <script type=\"text/javascript\">
